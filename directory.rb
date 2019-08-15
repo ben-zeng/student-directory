@@ -74,7 +74,7 @@ def input_students
   puts "Please enter the names of the students"
   puts "to finish, just hit return twice"
   students = []
-  name = gets.chomp
+  name = gets.delete_suffix("\n")
   while !name.empty? do
     puts "Please enter cohort month:"
     cohort = gets.chomp
