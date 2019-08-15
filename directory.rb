@@ -18,11 +18,48 @@ def print_header
   puts "-------------"
 end
 
+
+# with no filtering - while loop
 def print(students)
-  students.each do |students|
-    puts "#{students[:name]} (#{students[:cohort]} cohort)"
+  i = 0
+  while i < students.length do
+    student = students[i]
+    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+    i += 1
   end
 end
+
+=begin
+# with no filtering
+def print(students)
+  students.each_with_index do |students,index|
+    puts "#{index+1}. #{students[:name]} (#{students[:cohort]} cohort)"
+  end
+end
+=end
+
+
+=begin
+# Prints name beginning with A
+def print(students)
+  students.each_with_index do |students,index|
+  if students[:name].start_with?("a")
+    puts "#{index+1}. #{students[:name]} (#{students[:cohort]} cohort)"
+  end
+  end
+end
+=end
+
+=begin
+# Prints students with names shorter than 12 chars
+def print(students)
+  students.each_with_index do |students,index|
+  if students[:name].length < 12
+    puts "#{index+1}. #{students[:name]} (#{students[:cohort]} cohort)"
+  end
+  end
+end
+=end
 
 def print_footer(names)
   puts "Overall, we have #{names.count} great students"
