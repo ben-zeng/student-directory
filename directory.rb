@@ -15,8 +15,8 @@ students = [
   {name: "Norman Bates", cohort: :november}
 ]
 def print_header
-  puts "The students of Villains Academy"
-  puts "-------------"
+  puts "The students of Villains Academy".center(50)
+  puts "-------------".center(50)
 end
 
 
@@ -25,7 +25,7 @@ def print(students)
   i = 0
   while i < students.length do
     student = students[i]
-    puts "#{student[:name]} (#{student[:cohort]} cohort, who's favourite hobby is #{student[:hobby]})"
+    puts "#{student[:name]} (#{student[:cohort]} cohort, who's favourite hobby is #{student[:hobby]})".center(50)
     i += 1
   end
 end
@@ -63,7 +63,7 @@ end
 =end
 
 def print_footer(names)
-  puts "Overall, we have #{names.count} great students"
+  puts "Overall, we have #{names.count} great students".center(50)
 end
 
 def input_students
