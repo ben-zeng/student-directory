@@ -1,3 +1,4 @@
+require 'date'
 student_count = 11
 
 students = [
@@ -71,7 +72,9 @@ def input_students
   students = []
   name = gets.chomp
   while !name.empty? do
-    students << {name: name, cohort: :november}
+    puts "Please enter cohort month:"
+    cohort = gets.chomp
+    students << {name: name, cohort: cohort.to_sym}
     puts "Now we have #{students.count} students"
     name = gets.chomp
   end
