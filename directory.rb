@@ -25,7 +25,7 @@ def print(students)
   i = 0
   while i < students.length do
     student = students[i]
-    puts "#{student[:name]} (#{student[:cohort]} cohort, who's favourite hobby is #{student[:hobby]})".center(50)
+    puts "#{1}. #{student[:name]} (#{student[:cohort]} cohort, who's favourite hobby is #{student[:hobby]})".center(50)
     i += 1
   end
 end
@@ -80,6 +80,9 @@ def input_students
     puts "Now we have #{students.count} students"
     name = gets.chomp
   end
+  sorted = students.sort_by!{|x|x[:cohort]}
+
+
   students
 end
 
