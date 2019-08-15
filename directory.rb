@@ -63,7 +63,11 @@ end
 =end
 
 def print_footer(names)
-  puts "Overall, we have #{names.count} great students".center(50)
+  if names.count == 1
+    puts "Overall, we have #{names.count} great student".center(50)
+  else
+      puts "Overall, we have #{names.count} great students".center(50)
+  end
 end
 
 def input_students
@@ -81,8 +85,6 @@ def input_students
     name = gets.chomp
   end
   sorted = students.sort_by!{|x|x[:cohort]}
-
-
   students
 end
 
