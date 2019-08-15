@@ -25,7 +25,7 @@ def print(students)
   i = 0
   while i < students.length do
     student = students[i]
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+    puts "#{student[:name]} (#{student[:cohort]} cohort, who's favourite hobby is #{student[:hobby]})"
     i += 1
   end
 end
@@ -74,7 +74,9 @@ def input_students
   while !name.empty? do
     puts "Please enter cohort month:"
     cohort = gets.chomp
-    students << {name: name, cohort: cohort.to_sym}
+    puts "Please enter favourite hobby"
+    hobby = gets.chomp
+    students << {name: name, cohort: cohort.to_sym, hobby: hobby.to_sym}
     puts "Now we have #{students.count} students"
     name = gets.chomp
   end
