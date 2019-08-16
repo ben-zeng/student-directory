@@ -1,20 +1,21 @@
+@students = []
+
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
-  # create an empty array
-  students = []
+
   # get the first name
   name = gets.chomp
   # while the name is not empty, repeat this code
   while !name.empty? do
   # add the student hash to the array
-  students << {name: name, cohort: :november}
-  puts "Now we have #{students.count} students"
+  @students << {name: name, cohort: :november}
+  puts "Now we have #{@students.count} students"
   # get another name from the user
   name = gets.chomp
   end
   # return the array of students
-  students
+  @students
 end
 
 
@@ -28,39 +29,48 @@ end
 
 
 
-def print(students)
-  students.each_with_index do |students,index|
+def print_student_list
+  @students.each_with_index do |students,index|
     puts "#{index+1}. #{students[:name]} (#{students[:cohort]} cohort)"
   end
 end
 
-def print_footer(names)
-  puts "Overall, we have #{names.count} great students"
+def print_footer
+  puts "Overall, we have #{@students.count} great students"
+end
+
+def print_menu
+  puts "1. Input the students"
+  puts "2. Show the students"
+  puts "9. Exit"
+end
+
+def show_students
+  print_header
+  print_student_list
+  print_footer
+end
+
+def process (selection)
+  case selection
+    when "1"
+      @students = input_students
+      if @students.count == 0
+        puts "No students"
+      end
+    when "2"
+      show_students
+    when "9"
+      exit
+    else
+      puts " invalid entry, try again"
+    end
 end
 
 def interactive_menu
-  # create an empty array
-  students = []
-  loop do
-    puts "1. Input the students"
-    puts "2. Show the students"
-    puts "9. Exit"
-    selection = gets.chomp
-    case selection
-      when "1"
-        students = input_students
-        if students.count == 0
-          puts "No students"
-        end
-      when "2"
-        print_header
-        print(students)
-        print_footer(students)
-      when "9"
-        exit
-      else
-        puts " invalid entry, try again"
-      end
+loop do
+    print_menu
+    process(gets.chomp)
   end
 end
 
